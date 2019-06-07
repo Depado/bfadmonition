@@ -9,7 +9,7 @@ import (
 	bf "github.com/russross/blackfriday/v2"
 )
 
-var adre = regexp.MustCompile(`^!!!\s(.\w+)\s*(.*)\n`)
+var adre = regexp.MustCompile(`^!!!\s?([\w]+(?: +[\w]+)*)(?: +"(.*?)")? *\n`)
 
 // Renderer is a custom Blackfriday renderer that attempts to find admonition
 // style markdown and render it
@@ -66,7 +66,7 @@ func (r *Renderer) RenderNode(w io.Writer, node *bf.Node, entering bool) bf.Walk
 		r.buff = bytes.Buffer{}
 		r.w = bufio.NewWriter(&r.buff)
 		t, title := matches[1], matches[2]
-		r.w.WriteString(`<div class="admonition-`)
+		r.w.WriteString(`<div class="admonition `)
 		r.w.Write(t)
 		r.w.WriteString(`">`)
 		r.w.Write([]byte{'\n', '\t'})

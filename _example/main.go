@@ -11,7 +11,7 @@ import (
 var md = `# Title
 ## Subtitle
 
-!!! note My Note Title
+!!! note "My Note Title"
 	First Line
 	Second Line
 	*Italic*
@@ -20,7 +20,7 @@ var md = `# Title
 !!! warning
 	**This is very dangerous, think again!**
 
-!!! danger Dangerous Stuff Ahead
+!!! danger "Dangerous Stuff Ahead"
 	This is a simple test.
 	This could even be another test to be honest.
 	` + "```go" + `
