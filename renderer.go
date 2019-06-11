@@ -6,7 +6,7 @@ import (
 	"io"
 	"regexp"
 
-	bf "github.com/russross/blackfriday/v2"
+	bf "gopkg.in/russross/blackfriday.v2"
 )
 
 var adre = regexp.MustCompile(`^!!!\s?([\w]+(?: +[\w]+)*)(?: +"(.*?)")? *\n`)
@@ -71,7 +71,7 @@ func (r *Renderer) RenderNode(w io.Writer, node *bf.Node, entering bool) bf.Walk
 		r.w.WriteString(`">`)
 		r.w.Write([]byte{'\n', '\t'})
 		if len(title) > 0 {
-			r.w.WriteString(`<p class="adminition-title">`)
+			r.w.WriteString(`<p class="admonition-title">`)
 			r.w.Write(title)
 			r.w.WriteString(`</p>`)
 			r.w.Write([]byte{'\n', '\t'})
